@@ -1,0 +1,130 @@
+---
+import "../styles/devlog.css";
+import "../styles/post.css"
+import { getCollection } from "astro:content";
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const clientPosts = allPosts.map(post => ({
+  id: post.id,
+  title: post.data.title,
+  description: post.data.description,
+  heroImage: post.data.heroImage,
+  pubDate: post.data.pubDate
+}));
+
+const postsPerPage = 8;
+---
+
+<div id="devlog">
+  <h2 class="section-headline">Devlog</h2>
+  <div class="posts" id="posts-container">
+  </div>
+  
+  <div class="pagination-controls">
+    <button class="page-btn" id="prev-page-btn">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5 1L1.5 10L10.5 19" stroke="white" stroke-width="2"/>
+      </svg>
+    </button>
+    <span id="page-indicator"></span>
+    <button class="page-btn" id="next-page-btn">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 1L10.5 10L1.5 19" stroke="white" stroke-width="2"/>
+      </svg>        
+    </button>
+  </div>
+</div>
+
+<script define:vars={{ clientPosts, postsPerPage }}>
+  let currentPage = 1;
+  const totalPages = Math.ceil(clientPosts.length / postsPerPage);
+  
+  const postsContainer = document.getElementById('posts-container');
+  const prevBtn = document.getElementById('prev-page-btn');
+  const nextBtn = document.getElementById('next-page-btn');
+  const pageIndicator = document.getElementById('page-indicator');
+  
+  function paginatePosts(page) {
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    return clientPosts.slice(start, end);
+  }
+  
+  function renderPosts(page) {
+    const postsToRender = paginatePosts(page);
+    
+    postsContainer.innerHTML = '';
+    
+    postsToRender.forEach(post => {
+      const postElement = document.createElement('div');
+      postElement.className = 'post';
+      
+      const formattedDate = new Date(post.pubDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      postElement.innerHTML = `
+        <div class="post">
+          <img class="post-thumbnail" src=${post.heroImage} alt="">
+          <h3 class="post-title">${post.title}</h3>
+          <p class="post-desc">
+            ${post.description}
+          </p>
+          <div class="post-date">${formattedDate}</div>
+        </div
+      `;
+      
+      postElement.addEventListener("click", () => {
+        window.open(`/blog/${post.id}`)
+      })
+
+      postsContainer.appendChild(postElement);
+    });
+    
+    updateUIState(page);
+  }
+  
+  function updateUIState(page) {
+    pageIndicator.textContent = `Page ${page} of ${totalPages}`;
+    
+    prevBtn.disabled = page === 1;
+    nextBtn.disabled = page === totalPages;
+    
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', page.toString());
+    window.history.pushState({}, '', url);
+  }
+  
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPosts(currentPage);
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderPosts(currentPage);
+    }
+  });
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+    
+    if (pageParam) {
+      const pageNumber = parseInt(pageParam);
+      if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+        currentPage = pageNumber;
+      }
+    }
+    
+    renderPosts(currentPage);
+  });
+</script>

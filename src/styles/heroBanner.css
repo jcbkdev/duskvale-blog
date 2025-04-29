@@ -1,0 +1,90 @@
+#hero-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/hero-bg.png");
+  background-color: var(--color-bg);
+  background-size: fill;
+  background-position: center;
+  width: 100vw;
+  height: 720px;
+}
+
+.hero-content {
+  width: 80%;
+  text-align: center;
+}
+
+.hero-content .headline {
+  color: #ffffff;
+  font-size: 64px;
+}
+
+.hero-content .hero-head * {
+  margin: 0;
+}
+
+.hero-content .slogan {
+  color: #ffffff;
+  font-weight: 100;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.hero-content .hero-body {
+  margin: auto;
+  width: 65%;
+  margin-top: 24px;
+}
+
+.hero-content .hero-body * {
+  margin: 0;
+}
+
+.hero-content .invitation {
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.hero-content .btn-newsletter {
+  font-family: "Caudex";
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #181921c7;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .btn-newsletter:hover {
+  background-color: #3d4055c7;
+}
+
+@media (max-width: 720px) {
+  .hero-content .headline {
+    font-size: 32px;
+  }
+
+  .hero-content .slogan {
+    font-size: 18px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-head {
+    width: 80%;
+    margin: auto;
+  }
+
+  .hero-content .hero-body {
+    width: 90%;
+  }
+
+  .hero-content .invitation {
+    font-size: 16px;
+  }
+}
