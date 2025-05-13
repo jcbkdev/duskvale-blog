@@ -1,8 +1,11 @@
 ---
 import '../styles/heroBanner.css'
+import { Image } from 'astro:assets'
+import myImage from "../assets/hero-background.png"
 ---
 
 <div id="hero-banner">
+  <Image class="hero-background" src={myImage} alt=""/>
   <div class="hero-content">
     <div class="hero-head">
       <h1 class="headline">Enter the Shadows Of Duskvale</h1>
