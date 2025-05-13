@@ -7,7 +7,7 @@ heroImage: "/blog/1.png"
 
 Hi! I'm **JCBK**, currently the sole developer working on **Duskvale** - my passion project I've been dreaming about for a long time.
 
-Duskvale is planned to be a browser-based MMORPG game with an interactive **HD-2D style combat**, but point-and-click exploration on an overworld map. The game is **designed with busy players in mind** — those who may only have time during breaks — by combining turn-based, engaging combat with more relaxed, semi-passive exploration to create a balanced mix of active and idle gameplay.
+Duskvale is planned to be a browser-based MMORPG game with an interactive **2.5D style combat**, but point-and-click exploration on an overworld map. The game is **designed with busy players in mind** — those who may only have time during breaks — by combining turn-based, engaging combat with more relaxed, semi-passive exploration to create a balanced mix of active and idle gameplay.
 
 Over the past few months I’ve been working on the core systems of Duskvale, such as:
 
