@@ -46,9 +46,10 @@
   margin-bottom: 24px;
 }
 
-.hero-content .btn-newsletter {
+.hero-content .btn-discord {
   font-family: "Caudex";
   font-size: 16px;
+  text-decoration: none;
   color: #ffffff;
   background-color: #181921c7;
   border: 1px solid #ffffff;
@@ -58,7 +59,7 @@
   transition: background-color 0.3s ease;
 }
 
-.hero-content .btn-newsletter:hover {
+.hero-content .btn-discord:hover {
   background-color: #3d4055c7;
 }
 

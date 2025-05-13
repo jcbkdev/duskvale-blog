@@ -60,3 +60,8 @@
     outline: 8px solid #755aff00;
   }
 }
+
+a.post {
+  color: #ffffff;
+  text-decoration: none;
+}

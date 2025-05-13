@@ -59,8 +59,9 @@ const postsPerPage = 8;
     postsContainer.innerHTML = '';
     
     postsToRender.forEach(post => {
-      const postElement = document.createElement('div');
+      const postElement = document.createElement('a');
       postElement.className = 'post';
+      postElement.href = `/blog/${post.id}`
       
       const formattedDate = new Date(post.pubDate).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -69,19 +70,13 @@ const postsPerPage = 8;
       });
       
       postElement.innerHTML = `
-        <div class="post">
           <img class="post-thumbnail" src=${post.heroImage} alt="">
           <h3 class="post-title">${post.title}</h3>
           <p class="post-desc">
             ${post.description}
           </p>
           <div class="post-date">${formattedDate}</div>
-        </div
       `;
-      
-      postElement.addEventListener("click", () => {
-        window.open(`/blog/${post.id}`)
-      })
 
       postsContainer.appendChild(postElement);
     });
