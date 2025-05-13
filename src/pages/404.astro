@@ -1,0 +1,21 @@
+---
+import "../styles/errPage.css"
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+	</head>
+	<body>
+    <main id="err">
+      <img src="/logo.svg" alt="Duskvale's logo">
+      <h1 class="err-code">404</h1>
+      <p class="err-desc">Page not found.</p>
+      <a href="/">Return to homepage</a>
+    </main>
+    </div>
+  </body>
+</html>
