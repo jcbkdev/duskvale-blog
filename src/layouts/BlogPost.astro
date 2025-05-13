@@ -17,8 +17,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
-				margin: 0;
+				margin: auto;
+				margin-top: 20px;
 			}
+
 			.hero-image {
 				width: 100%;
 			}
@@ -26,6 +28,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				display: block;
 				margin: 0 auto;
 				border-radius: 12px;
+				max-height: 360px;
+				object-fit: cover;
 			}
 			.prose {
 				width: 720px;

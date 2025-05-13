@@ -65,7 +65,7 @@ a {
   color: var(--color-primary);
 }
 a:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-hover);
 }
 p {
   margin-bottom: 1em;
@@ -156,13 +156,13 @@ hr {
   border-radius: 4px;
   cursor: pointer;
   border: none;
-	transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.page-btn:hover{
-	background-color: var(--color-primary-hover);
+.page-btn:hover {
+  background-color: var(--color-primary-hover);
 }
 
-.page-btn:disabled{
-	background-color: var(--color-primary-disabled);
+.page-btn:disabled {
+  background-color: var(--color-primary-disabled);
 }
